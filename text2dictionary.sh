@@ -1,5 +1,28 @@
 #!/bin/bash
 
 # Получаем только кириллицу, отсекая много лишнего
-egrep -o '[А-Яа-я]+' $1 | sed 's/[[:upper:]]*/\L&/' | LANG= sort -u > /tmp/dict.$$
-python morph2normal.py /tmp/dict.$$ | LANG= sort -u > $1.dict
+
+lowercase() {
+	if [ "$(uname)" == 'Darwin' ]; then
+		tr '[:upper:]' '[:lower:]'
+	else
+		sed 's/[[:upper:]]*/\L&/'
+	fi
+}
+
+uniq4join() {
+	LANG= sort -u
+}
+
+normalize() {
+	python morph2normal.py /tmp/dict.$$ | uniq4join
+}
+
+cyrillic_words() {
+	egrep -o '[А-Яа-я]+' $1 | lowercase | uniq4join
+}
+
+tmpfile=/tmp/dict.$$
+cyrillic_words $1 > $tmpfile
+normalize $tmpfile > $1.dict
+rm -f $tmpfile
