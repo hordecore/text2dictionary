@@ -1,6 +1,4 @@
 #coding:utf8
-# берём из файла argv[1] те слова, которые имеют все тэги argv[2:]
-
 from __future__ import print_function
 import pymorphy2, sys
 
