@@ -23,6 +23,7 @@ cyrillic_words() {
 }
 
 tmpfile=/tmp/dict.$$
+output="${2:-$1.dict}"
 cyrillic_words $1 > $tmpfile
-normalize $tmpfile > $1.dict
+normalize $tmpfile > $output
 rm -f $tmpfile
