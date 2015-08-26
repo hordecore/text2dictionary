@@ -13,6 +13,4 @@ usage:
 
 # Полезные ссылки
 
-## Описание граммем, используемых в качестве аргументов для morphfilter
-
-http://pymorphy2.readthedocs.org/en/latest/user/grammemes.html#grammeme-docs
+[Описание граммем, используемых в качестве аргументов для morphfilter](http://pymorphy2.readthedocs.org/en/latest/user/grammemes.html#grammeme-docs)
